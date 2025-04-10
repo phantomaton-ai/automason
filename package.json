@@ -20,5 +20,11 @@
   "type": "module",
   "devDependencies": {
     "lovecraft": "^1.0.3"
+  },
+  "dependencies": {
+    "gallows": "^1.0.0",
+    "phantomaton": "^0.1.0",
+    "phantomaton-plugins": "^0.0.2",
+    "phantomaton-projects": "^1.0.7"
   }
 }
