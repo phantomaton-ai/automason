@@ -15,4 +15,4 @@ async function main() {
   automason(action, attributes, body);
 }
 
-main();
+await main();

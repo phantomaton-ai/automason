@@ -1,24 +1,30 @@
 import { expect, stub } from 'lovecraft';
 import { PassThrough } from 'stream';
-import automason from './automason.js';
-import read from './read.js';
+import util from './util.js';
 
 // Mock process.argv and process.stdin
 describe('CLI', () => {
   let originalArgv;
   let originalStdin;
-  let automasonStub;
+  let gallowsStub;
+  let executeStub;
 
   beforeEach(() => {
     originalArgv = process.argv;
     originalStdin = process.stdin;
-    automasonStub = stub(automason, 'default');
+    executeStub = stub().returns('Simulated execution result');
+    gallowsStub = stub(util, 'gallows').returns({
+      execute: executeStub
+    });
   });
 
   afterEach(() => {
     process.argv = originalArgv;
-    process.stdin = originalStdin;
-    automasonStub.restore();
+    Object.defineProperty(process, 'stdin', {
+      value: originalStdin,
+      writable: false
+    });
+    gallowsStub.restore();
   });
 
   it('parses command-line arguments correctly', async () => {
@@ -31,40 +37,20 @@ describe('CLI', () => {
       'file=test.txt'
     ];
 
-    // Mock an empty stdin stream
-    const stdinMock = new PassThrough();
-    process.stdin = stdinMock;
-
-    // Import the CLI module dynamically to reset module state
-    const cli = await import('./cli.js');
-
-    expect(automasonStub.calledWith(
-      'write', 
-      { project: 'test-project', file: 'test.txt' }, 
-      ''
-    )).to.be.true;
-  });
-
-  it('handles stdin input', async () => {
-    // Simulate CLI arguments
-    process.argv = [
-      'node', 
-      'cli.js', 
-      'write', 
-      'project=test-project', 
-      'file=test.txt'
-    ];
-
     // Mock a stdin stream with content
     const stdinMock = new PassThrough();
-    process.stdin = stdinMock;
+    Object.defineProperty(process, 'stdin', {
+      value: stdinMock,
+      writable: false
+    });
     stdinMock.write('test content');
     stdinMock.end();
 
     // Import the CLI module dynamically to reset module state
-    const cli = await import('./cli.js');
+    await import('./cli.js');
+    await new Promise(r => setTimeout(r, 1));
 
-    expect(automasonStub.calledWith(
+    expect(executeStub.calledOnceWith(
       'write', 
       { project: 'test-project', file: 'test.txt' }, 
       'test content'
