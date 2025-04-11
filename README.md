@@ -1,6 +1,6 @@
 # Automason 🧰🔮
 
-A versatile command-line utility for summoning and manipulating digital realms across project landscapes.
+A versatile command-line utility for summoning and manipulating digital realms across project landscapes, powered by the [Phantomaton](https://github.com/phantomaton-ai/phantomaton) ecosystem.
 
 ## Quickstart 🚀
 
@@ -45,7 +45,7 @@ A versatile command-line utility for summoning and manipulating digital realms a
 
 ## Overview 🌟
 
-Automason serves as a spectral conduit for manipulating project artifacts, drawing upon the eldritch powers of the Phantomaton ecosystem. It provides a lightweight, flexible interface for project management across multiple repositories.
+Automason serves as a spectral conduit for manipulating project artifacts, drawing upon the eldritch powers of the [Phantomaton Projects](https://github.com/phantomaton-ai/phantomaton-projects) repository. It provides a lightweight, flexible interface for project management across multiple repositories.
 
 ## Commands 📜
 
@@ -86,7 +86,7 @@ Automason serves as a spectral conduit for manipulating project artifacts, drawi
 
 ## Configuration 🔧
 
-Automason leverages the Phantomaton configuration system:
+Automason leverages the [Phantomaton](https://github.com/phantomaton-ai/phantomaton) configuration system:
 
 1. **Global Configuration**: `~/.phantomaton/configuration.json`
 2. **Local Configuration**: `.phantomaton/configuration.json`
