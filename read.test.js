@@ -53,4 +53,8 @@ describe('Read Stream', () => {
 
     expect(result).to.equal('First chunk of data');
   });
+
+  it('handles timeouts', async () => {
+    expect(await read(new PassThrough())).eq('');
+  });
 });
