@@ -11,7 +11,5 @@ const attributes = process.argv.slice(3).map(
 
 //TODO: Read from stdin?
 const body = '';
-console.log('starting');
-await automason(action, attributes, body);
-console.log('done');
-process.exit();
+
+automason(action, attributes, body);
