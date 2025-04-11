@@ -1,6 +1,8 @@
 import { expect, stub } from 'lovecraft';
 import phantomaton from 'phantomaton';
-import gallows from 'gallows';
+import execution from 'phantomaton-execution';
+import plugins from 'phantomaton-plugins';
+import util from './util.js';
 import automason from './automason.js';
 
 describe('Automason', () => {
@@ -10,18 +12,10 @@ describe('Automason', () => {
 
   beforeEach(() => {
     executeStub = stub().returns('Simulated execution result');
-    gallowsStub = stub(gallows, 'execute').returns(executeStub);
-    phantomatonStub = stub(phantomaton, 'default').returns({
-      install: [
-        { 
-          install: [
-            { 
-              execute: executeStub 
-            }
-          ]
-        }
-      ]
+    gallowsStub = stub(util, 'gallows').returns({
+      execute: executeStub
     });
+    phantomatonStub = stub(phantomaton, 'default').callThrough();
   });
 
   afterEach(() => {
@@ -44,6 +38,7 @@ describe('Automason', () => {
       }]
     })).to.be.true;
 
+    expect(executeStub.calledWith(action, attributes, body)).to.be.true;
     expect(result).to.equal('Simulated execution result');
   });
 
