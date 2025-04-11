@@ -2,6 +2,7 @@
   "name": "automason",
   "version": "0.0.1",
   "main": "automason.js",
+  "bin": "cli.js",
   "scripts": {
     "all": "lovecraft -a",
     "cov": "lovecraft -c",
