@@ -1,31 +1,7 @@
 #!/usr/bin/env node
 
 import automason from './automason.js';
-import { stdin } from 'process';
-
-async function readStdin() {
-  return new Promise((resolve) => {
-    let body = '';
-    
-    // Use a short timeout to detect if input is being piped
-    const timeout = setTimeout(() => {
-      resolve(body);
-    }, 100);
-
-    stdin.on('readable', () => {
-      clearTimeout(timeout);
-      let chunk;
-      while ((chunk = stdin.read()) !== null) {
-        body += chunk;
-      }
-    });
-
-    stdin.on('end', () => {
-      clearTimeout(timeout);
-      resolve(body);
-    });
-  });
-}
+import read from './read.js';
 
 async function main() {
   const action = process.argv[2];
@@ -34,7 +10,7 @@ async function main() {
     .map(arg => arg.split('='))
     .reduce((attrs, [attr, val]) => ({ ...attrs, [attr]: val }), {});
 
-  const body = await readStdin();
+  const body = await read(process.stdin);
 
   automason(action, attributes, body);
 }
