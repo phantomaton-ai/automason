@@ -5,7 +5,7 @@ export default async function read(stream) {
     // Very short timeout to minimize latency
     const timeout = setTimeout(() => {
       resolve(body);
-    }, 20);
+    }, 5);
 
     stream.on('readable', () => {
       clearTimeout(timeout);
