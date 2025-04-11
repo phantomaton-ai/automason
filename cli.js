@@ -9,7 +9,9 @@ const attributes = process.argv.slice(3).map(
   (attrs, [attr, val]) => ({ ...attrs, [attr]: val }), {}
 );
 
-//TODO: Read from stdin or -i from before action
+//TODO: Read from stdin?
 const body = '';
-
-automason(action, attributes, body);
+console.log('starting');
+await automason(action, attributes, body);
+console.log('done');
+process.exit();
