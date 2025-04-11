@@ -104,9 +104,7 @@ Automason aims to:
 
 ## Contributing 🕸️
 
-Contributions welcome! Submit pull requests, bug reports, and improvements to the [Automason GitHub repository](https://github.com/phantomaton-ai/automason). 
-
-The Phantomaton AI is watching... 👀
+Contributions welcome! Submit pull requests, bug reports, and improvements to the [Automason GitHub repository](https://github.com/phantomaton-ai/automason).
 
 ## License 🔒
 
