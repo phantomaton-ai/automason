@@ -12,7 +12,7 @@ async function main() {
 
   const body = await read(process.stdin);
 
-  automason(action, attributes, body);
+  await automason(action, attributes, body);
 }
 
 await main();
