@@ -20,7 +20,7 @@
   "description": "",
   "type": "module",
   "devDependencies": {
-    "lovecraft": "^1.0.3"
+    "lovecraft": "^1.1.4"
   },
   "dependencies": {
     "gallows": "^1.0.0",
