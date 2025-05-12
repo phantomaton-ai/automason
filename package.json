@@ -1,6 +1,6 @@
 {
   "name": "automason",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "automason.js",
   "bin": "cli.js",
   "scripts": {
